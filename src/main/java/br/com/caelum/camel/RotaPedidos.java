@@ -13,8 +13,8 @@ public class RotaPedidos {
 			
 			@Override
 			public void configure() throws Exception {
-				from("file:pedidos").
-				log("${id}${body}").
+				from("file:pedidos?delay=5s&noop=true").
+				log("${id}\n${body}").
 				to("file:saida");
 				
 			}
