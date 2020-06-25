@@ -14,7 +14,7 @@ public class RotaPedidos {
 			@Override
 			public void configure() throws Exception {
 				from("file:pedidos").
-				log("Cammel trabalhando").
+				log("${id}${body}").
 				to("file:saida");
 				
 			}
