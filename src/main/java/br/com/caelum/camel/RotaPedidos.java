@@ -1,6 +1,7 @@
 package br.com.caelum.camel;
 
 import org.apache.camel.CamelContext;
+import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
 
@@ -18,11 +19,10 @@ public class RotaPedidos {
 						xpath("/pedido/itens/item").
 					filter().
 						xpath("/item/formato[text()='EBOOK']").
-						log("${body}").
-					log("${id}").
 					marshal()
 						.xmljson().
-					setHeader("CamelFileName", simple("${file:name.noext}.json")).
+					setHeader(Exchange.FILE_NAME, simple("${file:name.noext}-${header.CamelSplitIndex}.json")).
+				log("${id} - ${body}").
 				to("file:saida");
 				
 			}
