@@ -14,7 +14,9 @@ public class RotaPedidos {
 			@Override
 			public void configure() throws Exception {
 				from("file:pedidos?delay=5s&noop=true").
-				log("${id}\n${body}").
+				log("${id}").
+				marshal().xmljson().
+				log("${body}").
 				to("file:saida");
 				
 			}
