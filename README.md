@@ -8,6 +8,9 @@ Cammel Docs
   - [Components](https://camel.apache.org/components/latest/index.html)
   - [RouteBuilder](http://camel.apache.org/maven/current/camel-core/apidocs/org/apache/camel/builder/RouteBuilder.html)
   - [splitter](https://camel.apache.org/components/latest/eips/split-eip.html)
+  - [Component Simple](https://camel.apache.org/components/latest/languages/simple-language.html)
+  - [Component constant](https://camel.apache.org/components/latest/languages/constant-language.html)
+  - [Component http](https://camel.apache.org/components/latest/http-component.html)
 
 Integration Patterns
   - [Message](https://camel.apache.org/components/latest/eips/message.html)
