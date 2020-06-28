@@ -11,6 +11,9 @@ Cammel Docs
   - [Component Simple](https://camel.apache.org/components/latest/languages/simple-language.html)
   - [Component constant](https://camel.apache.org/components/latest/languages/constant-language.html)
   - [Component http](https://camel.apache.org/components/latest/http-component.html)
+  - [Component direct](https://camel.apache.org/components/latest/direct-component.html)
+  - [Component seda](https://camel.apache.org/components/latest/seda-component.html)
+    - A ideia do SEDA é que cada rota (e sub-rota) possua uma fila dedicada de entrada e as rotas enviam mensagens para essas filas para se comunicar. Dentro dessa arquitetura, as mensagens são chamadas de eventos. A rota fica então consumindo as mensagens/eventos da fila, tudo funcionando em paralelo.
 
 Integration Patterns
   - [Message](https://camel.apache.org/components/latest/eips/message.html)

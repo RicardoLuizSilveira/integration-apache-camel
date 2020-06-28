@@ -16,10 +16,11 @@ public class RotaPedidos {
 			@Override
 			public void configure() throws Exception {
 				from("file:pedidos?delay=5s&noop=true").
-					to("seda:soap").
-					to("seda:http");
+					multicast().
+						to("direct:soap").
+						to("direct:http");
 				
-				from("seda:http").
+				from("direct:http").
 					routeId("rota-http").
 					setProperty("pedidoId", xpath("/pedido/id/text()")).
 					setProperty("clienteId", xpath("/pedido/pagamento/email-titular/text()")).
@@ -36,7 +37,7 @@ public class RotaPedidos {
 				setHeader(Exchange.HTTP_QUERY, simple("ebookId=${property.ebookId}&pedidoId=${property.pedidoId}&clienteId=${property.clienteId}")).
 				to("http4://localhost:8080/webservices/ebook/item");
 				
-				from("seda:soap").
+				from("direct:soap").
 					routeId("rota-soap").
 					setBody(constant("<envelopeId>45875</envelopeId>")).
 				to("mock:soap");
